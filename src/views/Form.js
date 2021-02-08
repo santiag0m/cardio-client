@@ -3,6 +3,25 @@ import React, { useState, useCallback } from "react";
 import Field from "../components/Field.js";
 import { Button, FormControl, FormGroup, makeStyles } from "@material-ui/core";
 
+
+async function postData(url = '', data = {}) {
+  // Default options are marked with *
+  const bodyData = JSON.stringify(data)
+  console.log(bodyData)
+  const response = await fetch(url, {
+    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    mode: 'no-cors', // no-cors, *cors, same-origin
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    // credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+      'Content-Type': 'application/json'
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: bodyData // body data type must match "Content-Type" header
+  });
+  return response.json(); // parses JSON response into native JavaScript objects
+}
+
 function requestUpdate(field_name, value, formRequest, setRequest) {
   if ((value !== undefined) & (value !== null) & (value !== "")) {
     let newRequest = { ...formRequest };
@@ -17,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     width: "80%",
+    alignItems: "center",
     margin: "0 0 128px 0",
   },
   formControl: {
@@ -25,19 +45,24 @@ const useStyles = makeStyles((theme) => ({
   },
   checkboxGroup: {
     display: "flex",
-    flexDirection: "row",
-    flexWrap: "wrap",
+    flexDirection: "column",
+    width: "80%",
     justifyContent: "center",
-    alignSelf: "center",
     margin: "32px 0 0 0",
+    border: "1px solid red",
+  },
+  checkbox: {
+    width: "100%",
+    border: "1px solid red",
   },
   numbersGroup: {
     display: "flex",
-    flexDirection: "row",
-    flexWrap: "wrap",
+    flexDirection: "column",
+    // flexWrap: "wrap",
     justifyContent: "space-evenly",
     alignSelf: "center",
     margin: "32px 0 0 0",
+    border: "1px solid red",
   },
   number: {
     margin: "6px",
@@ -148,36 +173,42 @@ export default function Form() {
         field_name="Hypertension"
         type="checkbox"
         formUpdate={formUpdate}
+        className={classes.checkbox}
       />
       <Field
         key="Diabetes"
         field_name="Diabetes"
         type="checkbox"
         formUpdate={formUpdate}
+        className={classes.checkbox}
       />
       <Field
         key="Peripheral Artery Disease"
         field_name="Peripheral Artery Disease"
         type="checkbox"
         formUpdate={formUpdate}
+        className={classes.checkbox}
       />
       <Field
         key="Stroke"
         field_name="Stroke"
         type="checkbox"
         formUpdate={formUpdate}
+        className={classes.checkbox}
       />
       <Field
         key="Heart Failure"
         field_name="Heart failure"
         type="checkbox"
         formUpdate={formUpdate}
+        className={classes.checkbox}
       />
       <Field
         key="Arrhythmia"
         field_name="Arrhythmia"
         type="checkbox"
         formUpdate={formUpdate}
+        className={classes.checkbox}
       />
     </FormGroup>,
     <FormGroup key="urgent-checkboxes" className={classes.checkboxGroup}>
@@ -186,24 +217,28 @@ export default function Form() {
         field_name="Dialysis"
         type="checkbox"
         formUpdate={formUpdate}
+        className={classes.checkbox}
       />
       <Field
         key="Endocarditis"
         field_name="Endocarditis"
         type="checkbox"
         formUpdate={formUpdate}
+        className={classes.checkbox}
       />
       <Field
         key="Reanimation"
         field_name="Reanimation"
         type="checkbox"
         formUpdate={formUpdate}
+        className={classes.checkbox}
       />
       <Field
         key="Cardiogenic Shock"
         field_name="Cardiogenic Shock"
         type="checkbox"
         formUpdate={formUpdate}
+        className={classes.checkbox}
       />
     </FormGroup>,
     <FormGroup key="categories" className={classes.categoryGroup}>

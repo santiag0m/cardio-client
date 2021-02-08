@@ -9,6 +9,8 @@ import {
   Checkbox,
 } from "@material-ui/core";
 
+import ListSelectionField from "./ListSelectionField.js";
+
 export default function Field({
   field_name,
   type,
@@ -38,17 +40,11 @@ export default function Field({
       );
     } else {
       input_field = (
-        <FormControlLabel
-          control={
-            <Checkbox
-              checked={fieldValue}
-              label={field_name}
-              onChange={handleCheckboxChange}
-            />
-          }
-          label={field_name}
-          //   labelPlacement="start"
-        ></FormControlLabel>
+        <ListSelectionField
+          field_name={field_name}
+          options={{ Yes: "true", No: "false" }}
+          formUpdate={formUpdate}
+        />
       );
     }
   } else {

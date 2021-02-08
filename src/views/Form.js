@@ -17,27 +17,38 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     width: "80%",
+    alignItems: "center",
     margin: "0 0 128px 0",
   },
   formControl: {
     margin: theme.spacing(3),
     display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    // justifyContent: "center",
+
   },
   checkboxGroup: {
     display: "flex",
-    flexDirection: "row",
-    flexWrap: "wrap",
+    flexDirection: "column",
+    width: "80%",
     justifyContent: "center",
-    alignSelf: "center",
     margin: "32px 0 0 0",
+    // border: "1px solid red",
+  },
+  checkbox: {
+    width: "100%",
+    // border: "1px solid red",
   },
   numbersGroup: {
     display: "flex",
-    flexDirection: "row",
-    flexWrap: "wrap",
+    flexDirection: "column",
+    // flexWrap: "wrap",
     justifyContent: "space-evenly",
     alignSelf: "center",
     margin: "32px 0 0 0",
+    // border: "1px solid red",
+    width: "80%",
   },
   number: {
     margin: "6px",
@@ -148,36 +159,42 @@ export default function Form() {
         field_name="Hypertension"
         type="checkbox"
         formUpdate={formUpdate}
+        className={classes.checkbox}
       />
       <Field
         key="Diabetes"
         field_name="Diabetes"
         type="checkbox"
         formUpdate={formUpdate}
+        className={classes.checkbox}
       />
       <Field
         key="Peripheral Artery Disease"
         field_name="Peripheral Artery Disease"
         type="checkbox"
         formUpdate={formUpdate}
+        className={classes.checkbox}
       />
       <Field
         key="Stroke"
         field_name="Stroke"
         type="checkbox"
         formUpdate={formUpdate}
+        className={classes.checkbox}
       />
       <Field
-        key="Heart Failure"
+        key="Heart failure"
         field_name="Heart failure"
         type="checkbox"
         formUpdate={formUpdate}
+        className={classes.checkbox}
       />
       <Field
         key="Arrhythmia"
         field_name="Arrhythmia"
         type="checkbox"
         formUpdate={formUpdate}
+        className={classes.checkbox}
       />
     </FormGroup>,
     <FormGroup key="urgent-checkboxes" className={classes.checkboxGroup}>
@@ -186,24 +203,28 @@ export default function Form() {
         field_name="Dialysis"
         type="checkbox"
         formUpdate={formUpdate}
+        className={classes.checkbox}
       />
       <Field
         key="Endocarditis"
         field_name="Endocarditis"
         type="checkbox"
         formUpdate={formUpdate}
+        className={classes.checkbox}
       />
       <Field
         key="Reanimation"
         field_name="Reanimation"
         type="checkbox"
         formUpdate={formUpdate}
+        className={classes.checkbox}
       />
       <Field
         key="Cardiogenic Shock"
         field_name="Cardiogenic Shock"
         type="checkbox"
         formUpdate={formUpdate}
+        className={classes.checkbox}
       />
     </FormGroup>,
     <FormGroup key="categories" className={classes.categoryGroup}>

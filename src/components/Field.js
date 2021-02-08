@@ -34,7 +34,7 @@ export default function Field({
   if (options === undefined) {
     if (type !== "checkbox") {
       input_field = (
-        <FormControl>
+        <FormControl style={{width: "100%"}}>
           <TextField type={type} label={field_name} onChange={handleChange} />
         </FormControl>
       );

@@ -20,9 +20,9 @@ export default function ListSelectionField({
   }, [field_name, fieldValue]);
 
   return (
-    <FormControl>
+    <FormControl style={{width: '100%', border: '1px solid gray'}}>
       <FormLabel component="legend">{field_name}</FormLabel>
-      <List>
+      <List style={{width: '100%'}}>
         {Object.entries(options).map(entry => {
           let [text, value] = entry
           return (
@@ -30,6 +30,7 @@ export default function ListSelectionField({
               button
               selected={value === fieldValue}
               onClick={() => setFieldValue(value)}
+              style={{width: '100%'}}
             >
               <ListItemText primary={text} />
             </ListItem>

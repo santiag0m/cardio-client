@@ -23,6 +23,10 @@ const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(3),
     display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    // justifyContent: "center",
+
   },
   checkboxGroup: {
     display: "flex",
@@ -44,6 +48,7 @@ const useStyles = makeStyles((theme) => ({
     alignSelf: "center",
     margin: "32px 0 0 0",
     // border: "1px solid red",
+    width: "80%",
   },
   number: {
     margin: "6px",

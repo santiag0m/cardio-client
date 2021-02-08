@@ -23,7 +23,8 @@ export default function ListSelectionField({
     <FormControl>
       <FormLabel component="legend">{field_name}</FormLabel>
       <List>
-        {Object.entries(options).map((text, value) => {
+        {Object.entries(options).map(entry => {
+          let [text, value] = entry
           return (
             <ListItem
               button

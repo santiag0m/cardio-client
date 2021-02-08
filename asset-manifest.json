@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/cardio-client/static/css/main.e84966a6.chunk.css",
+    "main.js": "/cardio-client/static/js/main.7e2b0a85.chunk.js",
+    "main.js.map": "/cardio-client/static/js/main.7e2b0a85.chunk.js.map",
+    "runtime-main.js": "/cardio-client/static/js/runtime-main.95b7382a.js",
+    "runtime-main.js.map": "/cardio-client/static/js/runtime-main.95b7382a.js.map",
+    "static/js/2.e681005e.chunk.js": "/cardio-client/static/js/2.e681005e.chunk.js",
+    "static/js/2.e681005e.chunk.js.map": "/cardio-client/static/js/2.e681005e.chunk.js.map",
+    "index.html": "/cardio-client/index.html",
+    "precache-manifest.1b975cc63a7a78cf6d3aca3cb7cb8f60.js": "/cardio-client/precache-manifest.1b975cc63a7a78cf6d3aca3cb7cb8f60.js",
+    "service-worker.js": "/cardio-client/service-worker.js",
+    "static/css/main.e84966a6.chunk.css.map": "/cardio-client/static/css/main.e84966a6.chunk.css.map",
+    "static/js/2.e681005e.chunk.js.LICENSE.txt": "/cardio-client/static/js/2.e681005e.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.95b7382a.js",
+    "static/js/2.e681005e.chunk.js",
+    "static/css/main.e84966a6.chunk.css",
+    "static/js/main.7e2b0a85.chunk.js"
+  ]
+}

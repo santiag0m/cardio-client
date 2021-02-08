@@ -64,7 +64,28 @@ export default function Form() {
   const [formRequest, setFormRequest] = useState({});
 
   let handleSubmit = () => {
-    alert(JSON.stringify(formRequest));
+    fetch(
+      "https://ayef8zx40j.execute-api.us-east-1.amazonaws.com/dev/",
+      {
+        method:"POST",
+        mode: "cors",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formRequest)
+      }
+    ).then(response => response.json())
+    .then(data => {
+      console.log(data)
+      if (data.risk_score !== undefined){
+        const risk = (parseFloat(data.risk_score) * 100).toFixed(2)
+        alert("The risk score is: " + risk + "%")
+    } else{
+      alert(data.message)}
+    }
+    );
+  
+    console.log(JSON.stringify(formRequest));
   };
 
   const formUpdate = useCallback(
@@ -148,7 +169,7 @@ export default function Form() {
       />
       <Field
         key="Heart Failure"
-        field_name="Heart Failure"
+        field_name="Heart failure"
         type="checkbox"
         formUpdate={formUpdate}
       />
@@ -234,16 +255,16 @@ export default function Form() {
         className={classes.category}
       />
       <Field
-        key="Mitral valve insufficiency"
-        field_name="Mitral valve insufficiency"
+        key="Mitral valve regurgitation"
+        field_name="Mitral valve regurgitation"
         type="category"
         options={["No", "Trivial", "Mild", "Moderate", "Severe"]}
         formUpdate={formUpdate}
         className={classes.category}
       />
       <Field
-        key="Tricuspid valve insufficiency"
-        field_name="Tricuspid valve insufficiency"
+        key="Tricuspid valve regurgitation"
+        field_name="Tricuspid valve regurgitation"
         type="category"
         options={["No", "Trivial", "Mild", "Moderate", "Severe"]}
         formUpdate={formUpdate}

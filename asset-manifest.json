@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/cardio-client/static/css/main.e48cffbe.chunk.css",
-    "main.js": "/cardio-client/static/js/main.be10a4b9.chunk.js",
-    "main.js.map": "/cardio-client/static/js/main.be10a4b9.chunk.js.map",
+    "main.js": "/cardio-client/static/js/main.7f2e7dab.chunk.js",
+    "main.js.map": "/cardio-client/static/js/main.7f2e7dab.chunk.js.map",
     "runtime-main.js": "/cardio-client/static/js/runtime-main.95b7382a.js",
     "runtime-main.js.map": "/cardio-client/static/js/runtime-main.95b7382a.js.map",
     "static/js/2.761ea93c.chunk.js": "/cardio-client/static/js/2.761ea93c.chunk.js",
     "static/js/2.761ea93c.chunk.js.map": "/cardio-client/static/js/2.761ea93c.chunk.js.map",
     "index.html": "/cardio-client/index.html",
-    "precache-manifest.2a921c47d8eea026b8e1df63f89f655c.js": "/cardio-client/precache-manifest.2a921c47d8eea026b8e1df63f89f655c.js",
+    "precache-manifest.fd654ffa0062b2cac258f613453e245a.js": "/cardio-client/precache-manifest.fd654ffa0062b2cac258f613453e245a.js",
     "service-worker.js": "/cardio-client/service-worker.js",
     "static/css/main.e48cffbe.chunk.css.map": "/cardio-client/static/css/main.e48cffbe.chunk.css.map",
     "static/js/2.761ea93c.chunk.js.LICENSE.txt": "/cardio-client/static/js/2.761ea93c.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.95b7382a.js",
     "static/js/2.761ea93c.chunk.js",
     "static/css/main.e48cffbe.chunk.css",
-    "static/js/main.be10a4b9.chunk.js"
+    "static/js/main.7f2e7dab.chunk.js"
   ]
 }

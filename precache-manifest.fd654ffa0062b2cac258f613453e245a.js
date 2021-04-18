@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "55bb8482a44fac49dbc25627fcccb935",
+    "revision": "8d316f538f010c32813a09327b95a85b",
     "url": "/cardio-client/index.html"
   },
   {
-    "revision": "7021c7f610d7f792b6b8",
+    "revision": "0936e42be026edc264d3",
     "url": "/cardio-client/static/css/main.e48cffbe.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/cardio-client/static/js/2.761ea93c.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "7021c7f610d7f792b6b8",
-    "url": "/cardio-client/static/js/main.be10a4b9.chunk.js"
+    "revision": "0936e42be026edc264d3",
+    "url": "/cardio-client/static/js/main.7f2e7dab.chunk.js"
   },
   {
     "revision": "e4cf72a28ca3341f38b2",

@@ -6,19 +6,15 @@ import {
   Radio,
   TextField,
   FormLabel,
-  Checkbox,
+  Switch,
+  Grid,
 } from "@material-ui/core";
 
-import ListSelectionField from "./ListSelectionField.js";
+export default function Field({ field, formUpdate, className, useSpanish }) {
+  const [fieldValue, setFieldValue] = useState(field.default);
 
-export default function Field({
-  field_name,
-  type,
-  formUpdate,
-  options,
-  className,
-}) {
-  const [fieldValue, setFieldValue] = useState(null);
+  let legend = useSpanish ? field.spanish_name : field.field_name;
+
   let handleChange = (e) => {
     setFieldValue(e.target.value);
   };
@@ -28,37 +24,76 @@ export default function Field({
   };
 
   useEffect(() => {
-    formUpdate(field_name, fieldValue);
-  }, [field_name, fieldValue]);
+    formUpdate(field.field_name, fieldValue);
+  }, [field, fieldValue]);
+
   let input_field;
-  if (options === undefined) {
-    if (type !== "checkbox") {
+
+  if (field.options === undefined) {
+    if (field.type !== "checkbox") {
       input_field = (
-        <FormControl style={{width: "100%"}}>
-          <TextField type={type} label={field_name} onChange={handleChange} />
+        <FormControl style={{ width: "100%" }}>
+          <TextField type={field.type} label={legend} onChange={handleChange} />
         </FormControl>
       );
     } else {
       input_field = (
-        <ListSelectionField
-          field_name={field_name}
-          options={{ Yes: "true", No: "false" }}
-          formUpdate={formUpdate}
-        />
+        <FormControl
+          style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <FormLabel component="legend">{legend}</FormLabel>
+          <Grid
+            component="label"
+            container
+            alignItems="center"
+            justify="center"
+            spacing={1}
+            style={{ width: "150px" }}
+          >
+            <Grid item>No</Grid>
+            <Grid item>
+              <Switch
+                checked={fieldValue}
+                onChange={handleCheckboxChange}
+                name="checkedC"
+              />
+            </Grid>
+            <Grid item>{useSpanish ? "Si" : "Yes"}</Grid>
+          </Grid>
+        </FormControl>
       );
     }
   } else {
     input_field = (
-      <FormControl key={field_name}>
-        <FormLabel id="-label">{field_name}</FormLabel>
+      <FormControl
+        key={field.field_name}
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+          alignItems: "center",
+          width: "100%",
+        }}
+      >
+        <FormLabel id="-label">{legend}</FormLabel>
 
-        <RadioGroup onChange={handleChange} value={fieldValue}>
-          {options.map((option_value) => {
+        <RadioGroup
+          onChange={handleChange}
+          value={fieldValue}
+          style={{ display: "flex", flexDirection: "row", maxWidth: "50%" }}
+        >
+          {field.options.map((option_value, i) => {
             return (
               <FormControlLabel
                 value={option_value}
                 control={<Radio />}
-                label={option_value}
+                label={useSpanish ? field.spanish_options[i] : option_value}
                 key={option_value}
               />
             );

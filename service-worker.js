@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/cardio-client/precache-manifest.1b975cc63a7a78cf6d3aca3cb7cb8f60.js"
+  "/cardio-client/precache-manifest.2a921c47d8eea026b8e1df63f89f655c.js"
 );
 
 self.addEventListener('message', (event) => {

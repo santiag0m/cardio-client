@@ -1,21 +1,37 @@
 import React, { useState, useCallback } from "react";
 
 import Field from "../components/Field.js";
-import { Button, FormControl, FormGroup, makeStyles } from "@material-ui/core";
+import {
+  FormLabel,
+  IconButton,
+  Button,
+  FormControl,
+  FormGroup,
+  makeStyles,
+} from "@material-ui/core";
+import LanguageIcon from "@material-ui/icons/Language";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     flexDirection: "column",
-    // width: "80%",
+    width: "60%",
+    maxWidth: "1000px",
     alignItems: "center",
-    margin: "0 0 128px 0",
+    // margin: "0 0 128px 0",
+    padding: "5%",
+    backgroundColor: "white",
+    borderRadius: "25px",
+    marginTop: "3%",
+    marginBottom: "5%",
   },
   formControl: {
     margin: theme.spacing(3),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    justifyContent: "flex-start",
+    width: "100%",
     // justifyContent: "center",
   },
   formGroup: {
@@ -25,28 +41,15 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-evenly",
     alignSelf: "center",
     margin: "32px 0 0 0",
-    // border: "1px solid red",
+    borderRadius: "3px",
     width: "80%",
   },
-  checkboxGroup: {
-    display: "flex",
-    flexDirection: "column",
-    width: "80%",
-    justifyContent: "center",
-    margin: "32px 0 0 0",
-    // border: "1px solid red",
-  },
-  checkbox: {
-    display: "flex",
-    flexDirection: "row",
-    width: "100%",
+  field: {
     margin: "6px",
-  },
-  number: {
-    margin: "6px",
-  },
-  category: {
-    margin: "6px",
+    padding: "6px",
+    backgroundColor: "rgba(230, 232, 235, 0.2)",
+    borderRadius: "5px",
+    widht: "80%",
   },
   submitButton: {
     alignSelf: "center",
@@ -67,112 +70,14 @@ const calculatorFields = [
     spanish_name: "Edad",
     type: "number",
     default: null,
-    group: "demographics",
+    group: "Demographics",
   },
   {
     field_name: "BMI",
     spanish_name: "IMC",
     type: "number",
     default: null,
-    group: "demographics",
-  },
-  {
-    field_name: "Coronary Arteries Blocked",
-    spanish_name: "Vasos Coronarios Enfermos",
-    type: "number",
-    default: null,
-    group: "demographics",
-  },
-  {
-    field_name: "LVEF",
-    spanish_name: "Fracción de Eyección",
-    type: "number",
-    default: null,
-    group: "laboratory",
-  },
-  {
-    field_name: "Hematocrit",
-    spanish_name: "Hematocrito",
-    type: "number",
-    default: null,
-    group: "laboratory",
-  },
-  {
-    field_name: "Creatinine",
-    spanish_name: "Creatinina",
-    type: "number",
-    default: null,
-    group: "laboratory",
-  },
-  {
-    field_name: "Hypertension",
-    spanish_name: "Hipertensión",
-    type: "checkbox",
-    default: false,
-    group: "comorbidities",
-  },
-  {
-    field_name: "Diabetes",
-    spanish_name: "Diabetes",
-    type: "checkbox",
-    default: false,
-    group: "comorbidities",
-  },
-  {
-    field_name: "Peripheral Artery Disease",
-    spanish_name: "Enfermedad Arterial Periférica",
-    type: "checkbox",
-    default: false,
-    group: "comorbidities",
-  },
-  {
-    field_name: "Stroke",
-    spanish_name: "Enfermedad Cerebro Vascular",
-    type: "checkbox",
-    default: false,
-    group: "comorbidities",
-  },
-  {
-    field_name: "Heart failure",
-    spanish_name: "Insuficiencia Cardíaca",
-    type: "checkbox",
-    default: false,
-    group: "comorbidities",
-  },
-  {
-    field_name: "Arrhythmia",
-    spanish_name: "Arritmia",
-    type: "checkbox",
-    default: false,
-    group: "comorbidities",
-  },
-  {
-    field_name: "Dialysis",
-    spanish_name: "Diálisis",
-    type: "checkbox",
-    default: false,
-    group: "comorbidities",
-  },
-  {
-    field_name: "Endocarditis",
-    spanish_name: "Endocarditis Infecciosa",
-    type: "checkbox",
-    default: false,
-    group: "comorbidities",
-  },
-  {
-    field_name: "Reanimation",
-    spanish_name: "Resucitación",
-    type: "checkbox",
-    default: false,
-    group: "procedure",
-  },
-  {
-    field_name: "Cardiogenic Shock",
-    spanish_name: "Schock Cardiogénico",
-    type: "checkbox",
-    default: false,
-    group: "procedure",
+    group: "Demographics",
   },
   {
     field_name: "Sex",
@@ -181,7 +86,91 @@ const calculatorFields = [
     options: ["Female", "Male"],
     spanish_options: ["Femenino", "Masculino"],
     default: "",
-    group: "demographics",
+    group: "Demographics",
+  },
+  {
+    field_name: "LVEF",
+    spanish_name: "Fracción de Eyección",
+    type: "number",
+    default: null,
+    group: "Laboratory",
+  },
+  {
+    field_name: "Hematocrit",
+    spanish_name: "Hematocrito",
+    type: "number",
+    default: null,
+    group: "Laboratory",
+  },
+  {
+    field_name: "Creatinine",
+    spanish_name: "Creatinina",
+    type: "number",
+    default: null,
+    group: "Laboratory",
+  },
+  {
+    field_name: "Coronary Arteries Blocked",
+    spanish_name: "Vasos Coronarios Enfermos",
+    type: "number",
+    default: null,
+    group: "Comorbidities",
+  },
+  {
+    field_name: "Hypertension",
+    spanish_name: "Hipertensión",
+    type: "checkbox",
+    default: false,
+    group: "Comorbidities",
+  },
+  {
+    field_name: "Diabetes",
+    spanish_name: "Diabetes",
+    type: "checkbox",
+    default: false,
+    group: "Comorbidities",
+  },
+  {
+    field_name: "Peripheral Artery Disease",
+    spanish_name: "Enfermedad Arterial Periférica",
+    type: "checkbox",
+    default: false,
+    group: "Comorbidities",
+  },
+  {
+    field_name: "Stroke",
+    spanish_name: "Enfermedad Cerebro Vascular",
+    type: "checkbox",
+    default: false,
+    group: "Comorbidities",
+  },
+  {
+    field_name: "Heart failure",
+    spanish_name: "Insuficiencia Cardíaca",
+    type: "checkbox",
+    default: false,
+    group: "Comorbidities",
+  },
+  {
+    field_name: "Arrhythmia",
+    spanish_name: "Arritmia",
+    type: "checkbox",
+    default: false,
+    group: "Comorbidities",
+  },
+  {
+    field_name: "Dialysis",
+    spanish_name: "Diálisis",
+    type: "checkbox",
+    default: false,
+    group: "Comorbidities",
+  },
+  {
+    field_name: "Endocarditis",
+    spanish_name: "Endocarditis Infecciosa",
+    type: "checkbox",
+    default: false,
+    group: "Comorbidities",
   },
   {
     field_name: "COPD",
@@ -190,7 +179,48 @@ const calculatorFields = [
     options: ["No", "Mild", "Moderate", "Severe"],
     spanish_options: ["No", "Leve", "Moderada", "Severa"],
     default: "",
-    group: "comorbidities",
+    group: "Comorbidities",
+  },
+  {
+    field_name: "Aortic valve insufficiency",
+    spanish_name: "Insuficiencia Aórtica",
+    type: "category",
+    options: ["No", "Trivial", "Mild", "Moderate", "Severe"],
+    spanish_options: ["No", "Trivial", "Leve", "Moderada", "Severa"],
+    default: "",
+    group: "Comorbidities",
+  },
+  {
+    field_name: "Mitral valve regurgitation",
+    spanish_name: "Insuficiencia Mitral",
+    type: "category",
+    options: ["No", "Trivial", "Mild", "Moderate", "Severe"],
+    spanish_options: ["No", "Trivial", "Leve", "Moderada", "Severa"],
+    default: "",
+    group: "Comorbidities",
+  },
+  {
+    field_name: "Tricuspid valve regurgitation",
+    spanish_name: "Insuficiencia Tricuspídea",
+    type: "category",
+    options: ["No", "Trivial", "Mild", "Moderate", "Severe"],
+    spanish_options: ["No", "Trivial", "Leve", "Moderada", "Severa"],
+    default: "",
+    group: "Comorbidities",
+  },
+  {
+    field_name: "Reanimation",
+    spanish_name: "Resucitación",
+    type: "checkbox",
+    default: false,
+    group: "Procedure",
+  },
+  {
+    field_name: "Cardiogenic Shock",
+    spanish_name: "Schock Cardiogénico",
+    type: "checkbox",
+    default: false,
+    group: "Procedure",
   },
   {
     field_name: "Urgency upon admission",
@@ -204,7 +234,7 @@ const calculatorFields = [
       "Emergencia - Rescate",
     ],
     default: "",
-    group: "procedure",
+    group: "Procedure",
   },
   {
     field_name: "Weight of procedure",
@@ -223,34 +253,7 @@ const calculatorFields = [
       "Tres o más procedimientos",
     ],
     default: "",
-    group: "procedure",
-  },
-  {
-    field_name: "Aortic valve insufficiency",
-    spanish_name: "Insuficiencia Aórtica",
-    type: "category",
-    options: ["No", "Trivial", "Mild", "Moderate", "Severe"],
-    spanish_options: ["No", "Trivial", "Leve", "Moderada", "Severa"],
-    default: "",
-    group: "comorbidities",
-  },
-  {
-    field_name: "Mitral valve regurgitation",
-    spanish_name: "Insuficiencia Mitral",
-    type: "category",
-    options: ["No", "Trivial", "Mild", "Moderate", "Severe"],
-    spanish_options: ["No", "Trivial", "Leve", "Moderada", "Severa"],
-    default: "",
-    group: "comorbidities",
-  },
-  {
-    field_name: "Tricuspid valve regurgitation",
-    spanish_name: "Insuficiencia Tricuspídea",
-    type: "category",
-    options: ["No", "Trivial", "Mild", "Moderate", "Severe"],
-    spanish_options: ["No", "Trivial", "Leve", "Moderada", "Severa"],
-    default: "",
-    group: "comorbidities",
+    group: "Procedure",
   },
 ];
 
@@ -280,7 +283,15 @@ export default function Form() {
   const [formRequest, setFormRequest] = useState(initState);
   const [useSpanish, setUseSpanish] = useState(true);
 
-  let handleSubmit = () => {
+  let calcTitle = useSpanish
+    ? "Calculadora de Riesgo de Mortalidad\nen Cirugía Cardiovascular"
+    : "Cardiac Surgery Mortality Risk Calculator";
+
+  const switchLanguage = () => {
+    setUseSpanish(!useSpanish);
+  };
+
+  const handleSubmit = () => {
     fetch("https://ayef8zx40j.execute-api.us-east-1.amazonaws.com/dev/", {
       method: "POST",
       mode: "cors",
@@ -294,7 +305,11 @@ export default function Form() {
         console.log(data);
         if (data.risk_score !== undefined) {
           const risk = (parseFloat(data.risk_score) * 100).toFixed(2);
-          alert("The risk score is: " + risk + "%");
+          alert(
+            useSpanish
+              ? "El puntaje de riesgo es: " + risk + "%"
+              : "The risk score is: " + risk + "%"
+          );
         } else {
           alert(data.message);
         }
@@ -311,26 +326,12 @@ export default function Form() {
   );
 
   function buildField(field) {
-    let className;
-
-    switch (field.type) {
-      case "number":
-        className = classes.number;
-        break;
-      case "checkbox":
-        className = classes.checkbox;
-        break;
-      case "category":
-        className = classes.category;
-        break;
-    }
-
     return (
       <Field
         key={field.field_name}
         field={field}
         formUpdate={formUpdate}
-        className={className}
+        className={classes.field}
         useSpanish={useSpanish}
       />
     );
@@ -338,9 +339,36 @@ export default function Form() {
 
   function buildFormGroup(group) {
     let groupFields = calculatorFields.filter((field) => field.group === group);
+    let spanishGroup;
+    switch (group) {
+      case "Comorbidities":
+        spanishGroup = "Comorbilidades";
+        break;
+      case "Procedure":
+        spanishGroup = "Procedimiento";
+        break;
+      case "Demographics":
+        spanishGroup = "Demográficos";
+        break;
+      case "Laboratory":
+        spanishGroup = "Laboratorio";
+        break;
+      default:
+        spanishGroup = "";
+    }
+
     return (
       <FormGroup key={group} className={classes.formGroup}>
-        {groupFields.map((field) => buildField(field))}
+        <fieldset
+          style={{
+            border: "1px solid gray",
+            borderRadius: "3px",
+            width: "100%",
+          }}
+        >
+          <legend>{useSpanish ? spanishGroup : group}</legend>
+          {groupFields.map((field) => buildField(field))}
+        </fieldset>
       </FormGroup>
     );
   }
@@ -360,7 +388,23 @@ export default function Form() {
   };
   return (
     <div className={classes.root}>
-      <h1>Cardiac Surgery Mortality Risk Calculator</h1>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "flex-end",
+          alignItems: "center",
+          width: "100%",
+        }}
+      >
+        <FormLabel component="legend">
+          {useSpanish ? "English" : "Español"}
+        </FormLabel>
+        <IconButton aria-label="language" onClick={switchLanguage}>
+          <LanguageIcon />
+        </IconButton>
+      </div>
+      <h1 width="100%">{calcTitle}</h1>
       <FormControl className={classes.formControl}>{fields}</FormControl>
       <Button
         variant="outlined"

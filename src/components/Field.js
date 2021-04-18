@@ -86,7 +86,13 @@ export default function Field({ field, formUpdate, className, useSpanish }) {
         <RadioGroup
           onChange={handleChange}
           value={fieldValue}
-          style={{ display: "flex", flexDirection: "row", maxWidth: "50%" }}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            flexWrap: "wrap",
+            width: "52%",
+            marginRight: "2%",
+          }}
         >
           {field.options.map((option_value, i) => {
             return (
@@ -95,6 +101,7 @@ export default function Field({ field, formUpdate, className, useSpanish }) {
                 control={<Radio />}
                 label={useSpanish ? field.spanish_options[i] : option_value}
                 key={option_value}
+                labelPlacement="start"
               />
             );
           })}

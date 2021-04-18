@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     flexDirection: "column",
-    width: "60%",
+    minWidth: "65%",
     maxWidth: "1000px",
     alignItems: "center",
     // margin: "0 0 128px 0",
